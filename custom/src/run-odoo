@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e
+
+log INFO "Running odoo"
+odoo -d "${DB_SOURCE}" \
+     --workers 4 \
+     --data-dir "${ODOO_FILESTORE:=/var/lib/odoo}" 

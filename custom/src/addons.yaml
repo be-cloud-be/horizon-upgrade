@@ -1,0 +1,8 @@
+web:
+  - "*" # All web addons
+
+partner-contact:
+  - "*" # All partner-contact addons
+
+horizon:
+  - "*" # All horizon addons
