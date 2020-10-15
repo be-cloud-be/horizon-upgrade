@@ -39,7 +39,7 @@ services:
       PGDATABASE: odoo_v10
       PGUSER: odoo
       PGPASSWORD: odoopassword
-      ODOO_BACKUP_PATH : ~/backup.zip
+      ODOO_BACKUP_PATH : ~/backup_local.zip
     links:
       - postgresql:db
       - postgresql:db_old
