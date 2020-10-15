@@ -2,6 +2,6 @@
 
 set -e
 
-log INFO "Build docker image"
+echo "Build docker image"
 
 docker build -t be-cloud/horizon-upgrade:9.0 .
