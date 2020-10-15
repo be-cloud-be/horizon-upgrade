@@ -22,3 +22,4 @@ services:
       PGPASSWORD: odoopassword
     links:
       - postgresql:db
+      
