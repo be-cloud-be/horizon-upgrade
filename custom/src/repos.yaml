@@ -5,7 +5,7 @@
     # You may need a bigger depth when merging PRs
     depth: "$DEPTH_DEFAULT"
   remotes:
-    openupgrade: https://github.com/odoo/odoo.git
+    odoo: https://github.com/odoo/odoo.git
   target:
     odoo $ODOO_VERSION
   merges:
