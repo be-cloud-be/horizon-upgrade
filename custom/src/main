@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+/opt/odoo/custom/src/remove-unused-modules
+/opt/odoo/custom/src/upgrade-odoo

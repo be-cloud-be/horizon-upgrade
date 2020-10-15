@@ -1,0 +1,49 @@
+# Odoo is always required
+./odoo:
+  defaults:
+    # Shallow repositories (1=1) are faster & thinner
+    # You may need a bigger depth when merging PRs
+    depth: "$DEPTH_DEFAULT"
+  remotes:
+    openupgrade: https://github.com/OCA/OpenUpgrade.git
+  target:
+    openupgrade $ODOO_VERSION
+  merges:
+    - openupgrade $ODOO_VERSION
+    
+./web:
+  defaults:
+    # Shallow repositories (1=1) are faster & thinner
+    # You may need a bigger depth when merging PRs
+    depth: "$DEPTH_DEFAULT"
+  remotes:
+    web: https://github.com/OCA/web.git
+    partner: https://github.com/OCA/partner-contact.git
+  target:
+    web $ODOO_VERSION
+  merges:
+    - web $ODOO_VERSION
+
+./partner-contact:
+  defaults:
+    # Shallow repositories (1=1) are faster & thinner
+    # You may need a bigger depth when merging PRs
+    depth: "$DEPTH_DEFAULT"
+  remotes:
+    partner-contact: https://github.com/OCA/partner-contact.git
+  target:
+    partner-contact $ODOO_VERSION
+  merges:
+    - partner-contact $ODOO_VERSION
+
+./horizon:
+  defaults:
+    # Shallow repositories (1=1) are faster & thinner
+    # You may need a bigger depth when merging PRs
+    depth: "$DEPTH_DEFAULT"
+  remotes:
+    horizon: https://github.com/be-cloud-be/horizon.git
+  target:
+    horizon $ODOO_VERSION
+  merges:
+    - horizon $ODOO_VERSION
