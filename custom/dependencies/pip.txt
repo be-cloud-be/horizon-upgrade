@@ -1,1 +1,4 @@
 git+https://github.com/LasLabs/git-aggregator.git@feature/thread-download
+git+https://github.com/OCA/openupgradelib.git@master
+unicodecsv
+unidecode
