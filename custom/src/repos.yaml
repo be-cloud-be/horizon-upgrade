@@ -10,7 +10,19 @@
     odoo $ODOO_VERSION
   merges:
     - odoo $ODOO_VERSION
-    
+
+./server-tools:
+  defaults:
+    # Shallow repositories (1=1) are faster & thinner
+    # You may need a bigger depth when merging PRs
+    depth: "$DEPTH_DEFAULT"
+  remotes:
+    server-tools: https://github.com/OCA/server-tools.git
+  target:
+    server-tools $ODOO_VERSION
+  merges:
+    - server-tools $ODOO_VERSION
+
 ./web:
   defaults:
     # Shallow repositories (1=1) are faster & thinner
@@ -18,7 +30,6 @@
     depth: "$DEPTH_DEFAULT"
   remotes:
     web: https://github.com/OCA/web.git
-    partner: https://github.com/OCA/partner-contact.git
   target:
     web $ODOO_VERSION
   merges:
