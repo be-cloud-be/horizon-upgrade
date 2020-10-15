@@ -82,7 +82,7 @@ if os.environ.get('ODOO_URI_OLD') or os.environ.get('ODOO_BACKUP_PATH'):
 else:
     """Copy the backup from another database."""
 
-    rsync_location = os.path.join(ODOO_FILESTORE_OLD, 'filestore', DB_TARGET)
+    rsync_location = os.path.join(ODOO_FILESTORE_OLD, 'filestore')
 
     logging.info('Dumping the source database into the target.')
     logging.debug(
