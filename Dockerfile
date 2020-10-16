@@ -4,7 +4,7 @@ ARG ODOO_VERSION=10.0
 ENV ODOO_VERSION=$ODOO_VERSION \
     PGDATABASE=$DB_SOURCE
     
-CMD ["/opt/odoo/custom/src/run-odoo"]
+CMD ["/opt/odoo/custom/src/upgrade-odoo"]
 
 # Metadata
 ARG BUILD_DATE
