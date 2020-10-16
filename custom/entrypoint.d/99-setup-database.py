@@ -28,7 +28,9 @@ if os.environ.get('ODOO_URI_OLD') or os.environ.get('ODOO_BACKUP_PATH'):
             shell=True,
         )
     )
-
+else:
+    logging.info('Skip database restore, database should be ready.')
+    
 logging.debug(
     subprocess.check_output([
         'chown', '-R',
