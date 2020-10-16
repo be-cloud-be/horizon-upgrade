@@ -28,6 +28,8 @@ if os.environ.get('ODOO_URI_OLD') or os.environ.get('ODOO_BACKUP_PATH'):
             shell=True,
         )
     )
+else:
+    logging.info('Skip restore database is supposed to be there.')
 
 logging.debug(
     subprocess.check_output([
