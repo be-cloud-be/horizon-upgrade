@@ -21,9 +21,17 @@ ODOO_SYSTEM_GROUP = os.environ.get('ODOO_SYSTEM_GROUP', 'odoo')
 if os.environ.get('ODOO_URI_OLD') or os.environ.get('ODOO_BACKUP_PATH'):
     logging.info('Copying the database backup into the target database.')
     logging.debug(
-        subprocess.check_output(
+        subprocess.call(
             'psql -h db -c "DROP DATABASE %s;"' % (
                 DB_SOURCE,
+            ),
+            shell=True,
+        )
+    )
+    logging.debug(
+        subprocess.check_output(
+            'psql -h db -c "CREATE DATABASE %s WITH OWNER=%s;"' % (
+                DB_SOURCE, PGUSER,\
             ),
             shell=True,
         )
