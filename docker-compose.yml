@@ -15,7 +15,7 @@ services:
   odoo_v9:
     image: be-cloud/horizon-upgrade:9.0
     ports:
-      - "8069:80"
+      - "80:8069"
     volumes:
       - ~/odoo_v9_data:/var/lib/odoo
     environment:
