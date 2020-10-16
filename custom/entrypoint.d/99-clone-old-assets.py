@@ -50,7 +50,7 @@ if os.environ.get('ODOO_URI_OLD') or os.environ.get('ODOO_BACKUP_PATH'):
     admin_pass = os.environ.get(
         'ADMIN_PASSWORD_OLD', os.environ.get('ADMIN_PASSWORD'),
     )
-    rsync_location = os.path.join(ODOO_FILESTORE_OLD, 'filestore')
+    rsync_location = os.path.join(ODOO_FILESTORE_OLD, 'filestore', DB_SOURCE)
 
     if os.environ.get('ODOO_URI_OLD'):
         logging.info('Getting the backup from the external Odoo.')
@@ -82,7 +82,7 @@ if os.environ.get('ODOO_URI_OLD') or os.environ.get('ODOO_BACKUP_PATH'):
 else:
     """Copy the backup from another database."""
 
-    rsync_location = os.path.join(ODOO_FILESTORE_OLD, 'filestore')
+    rsync_location = os.path.join(ODOO_FILESTORE_OLD, 'filestore', DB_SOURCE)
 
     logging.info('Dumping the source database into the target.')
     logging.debug(
