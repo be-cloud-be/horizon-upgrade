@@ -18,15 +18,16 @@ ODOO_UPDATE = os.environ.get('ODOO_UPDATE', 'all')
 ODOO_SYSTEM_USER = os.environ.get('ODOO_SYSTEM_USER', 'odoo')
 ODOO_SYSTEM_GROUP = os.environ.get('ODOO_SYSTEM_GROUP', 'odoo')
 
-logging.info('Copying the database backup into the target database.')
-logging.debug(
-    subprocess.check_output(
-        'psql -h db -d "%s" < %s/dump.sql' % (
-            DB_SOURCE, ODOO_FILESTORE,
-        ),
-        shell=True,
+if os.environ.get('ODOO_URI_OLD') or os.environ.get('ODOO_BACKUP_PATH'):
+    logging.info('Copying the database backup into the target database.')
+    logging.debug(
+        subprocess.check_output(
+            'psql -h db -d "%s" < %s/dump.sql' % (
+                DB_SOURCE, ODOO_FILESTORE,
+            ),
+            shell=True,
+        )
     )
-)
 
 logging.debug(
     subprocess.check_output([
