@@ -99,7 +99,7 @@ logging.debug(
     subprocess.check_output([
         'rsync', '-avz',
         rsync_location,
-        os.path.join(ODOO_FILESTORE_NEW, 'filestore'),
+        os.path.join(ODOO_FILESTORE_NEW, 'filestore', DB_TARGET),
     ])
 )
 logging.debug(
