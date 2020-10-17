@@ -12,14 +12,14 @@ services:
     volumes:
     - ~/postgresql_data/:/var/lib/postgresql/data/
 
-  odoo_v10:
-    image: be-cloud/horizon-upgrade:10.0
+  odoo_v11:
+    image: be-cloud/horizon-upgrade:11.0
     ports:
       - "80:8069"
     volumes:
       - ~/odoo_v10_data:/var/lib/odoo
     environment:
-      DB_SOURCE: odoo_v10
+      DB_SOURCE: odoo_v11
       PGUSER: odoo
       PGPASSWORD: odoopassword
     links:
