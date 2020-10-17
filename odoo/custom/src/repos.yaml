@@ -1,16 +1,29 @@
-# See https://github.com/Tecnativa/doodba#optodoocustomsrcreposyaml
-./odoo:
+# Odoo must be in the `odoo` folder for Doodba to work
+odoo:
   defaults:
-    # Shallow repositories ($DEPTH_DEFAULT=1) are faster & thinner
-    # You may need a bigger depth when merging PRs (use $DEPTH_MERGE
-    # for a sane value of 100 commits)
-    depth: $DEPTH_DEFAULT
+    # This will use git shallow clones.
+    # $DEPTH_DEFAULT is 1 in test and prod, but 100 in devel.
+    # $DEPTH_MERGE is always 100.
+    # You can use any integer value, OTOH.
+    depth: $DEPTH_MERGE
   remotes:
-    ocb: https://github.com/OCA/OCB.git
+    origin: https://github.com/OCA/OCB.git
     odoo: https://github.com/odoo/odoo.git
     openupgrade: https://github.com/OCA/OpenUpgrade.git
-  target: ocb $ODOO_VERSION
+  # $ODOO_VERSION is... the Odoo version! "11.0" or similar
+  target: origin $ODOO_VERSION
   merges:
-    - ocb $ODOO_VERSION
-    # Example of a merge of the PR with the number <PR>
-    # - oca refs/pull/<PR>/head
+    - origin $ODOO_VERSION
+    - odoo refs/pull/25594/head # Expose `Field` from search_filters.js
+
+web:
+  defaults:
+    depth: $DEPTH_MERGE
+  remotes:
+    origin: https://github.com/OCA/web.git
+    tecnativa: https://github.com/Tecnativa/partner-contact.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
+    - origin refs/pull/1007/head # web_responsive search
+    - tecnativa 11.0-some_addon-custom # Branch for this customer only
