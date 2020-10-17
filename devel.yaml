@@ -158,5 +158,9 @@ networks:
   public:
 
 volumes:
-  filestore: ~/odoo_v11_data
-  db: ~/postgresql_data
+  filestore:
+    - type: bind
+      source: ~/postgresql_data/
+  db:
+    - type: bind
+      source: ~/odoo_v11_data/
