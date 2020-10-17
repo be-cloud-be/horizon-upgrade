@@ -2,7 +2,7 @@ web:
   - "*" # All web addons
 
 server-tools:
-  - "base_*" # All server-tools addons
+  - "base_*" # base server-tools addons
 
 partner-contact:
   - "*" # All partner-contact addons
