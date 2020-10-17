@@ -158,7 +158,5 @@ networks:
   public:
 
 volumes:
-  filestore:
-    - ~/odoo_v11_data:/var/lib/odoo
-  db:
-    - ~/postgresql_data/:/var/lib/postgresql/data/
+  filestore: ~/odoo_v11_data:/var/lib/odoo
+  db: ~/postgresql_data/:/var/lib/postgresql/data/
