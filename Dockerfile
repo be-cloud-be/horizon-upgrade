@@ -21,4 +21,3 @@ LABEL maintainer="be-cloud.be <info@be-cloud.be>" \
       org.label-schema.version=$VERSION \
       org.label-schema.schema-version="1.0"
 
-USER odoo
