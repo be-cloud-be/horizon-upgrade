@@ -1,4 +1,4 @@
-FROM tecnativa/odoo-base:11.0
+FROM tecnativa/doodba:11.0
 
 ARG ODOO_VERSION=11.0
 ENV ODOO_VERSION=$ODOO_VERSION \
