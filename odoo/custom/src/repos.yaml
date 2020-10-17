@@ -26,4 +26,3 @@ web:
   merges:
     - origin $ODOO_VERSION
     - origin refs/pull/1007/head # web_responsive search
-    - tecnativa 11.0-some_addon-custom # Branch for this customer only
