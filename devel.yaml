@@ -159,8 +159,6 @@ networks:
 
 volumes:
   filestore:
-    - type: bind
-      source: ~/postgresql_data/
+    - ~/odoo_v11_data:/var/lib/odoo
   db:
-    - type: bind
-      source: ~/odoo_v11_data/
+    - ~/postgresql_data/:/var/lib/postgresql/data/
