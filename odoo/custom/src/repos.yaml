@@ -13,7 +13,6 @@ odoo:
   target: odoo $ODOO_VERSION
   merges:
     - odoo $ODOO_VERSION
-    - odoo refs/pull/25594/head # Expose `Field` from search_filters.js
 
 web:
   defaults:
