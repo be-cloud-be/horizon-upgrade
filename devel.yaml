@@ -57,12 +57,9 @@ services:
     command:
       - odoo
       - -d odoo_v11
-      - --limit-memory-soft=0
-      - --limit-time-real-cron=9999999
-      - --limit-time-real=9999999
       - --workers=0
-      - --dev=reload,qweb,werkzeug,xml
       - --update=all
+      - --stop-after-init
 
   db:
     extends:
