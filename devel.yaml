@@ -34,7 +34,7 @@ services:
       DOODBA_ENVIRONMENT: "${DOODBA_ENVIRONMENT-devel}"
       LIST_DB: "true"
       DEBUGPY_ENABLE: "${DOODBA_DEBUGPY_ENABLE:-0}"
-      PGDATABASE: &dbname "odoo_v11"
+      PGDATABASE: &dbname "odoo_v12"
       PYTHONDONTWRITEBYTECODE: 1
       PYTHONOPTIMIZE: ""
       PYTHONPATH: /opt/odoo/custom/src/odoo
@@ -56,7 +56,7 @@ services:
       - wdb
     command:
       - odoo
-      - -d odoo_v11
+      - -d odoo_v12
       - --workers=0
       - --update=all
       - --stop-after-init

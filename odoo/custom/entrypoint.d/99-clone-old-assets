@@ -1,0 +1,3 @@
+#!/bin/bash
+
+click-odoo-copydb --unless-dest-exists $DB_SOURCE $DB_TARGET
