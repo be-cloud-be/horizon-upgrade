@@ -95,7 +95,7 @@ else:
         )
     )
 
-logging.info('Cloning the old file store to the new one.')
+logging.info('Cloning the old file store to the new one %s -> %s.',rsync_location,os.path.join(ODOO_FILESTORE_NEW, 'filestore', DB_TARGET))
 logging.debug(
     subprocess.check_output([
         'rsync', '-avz',
