@@ -27,7 +27,7 @@ services:
       CONF_EXTRA: |
         work_mem = 32MB
     volumes:
-      - db:/var/lib/postgresql/data:z
+      - ~/postgresql_data/:/var/lib/postgresql/data/:z
 
   smtpfake:
     image: mailhog/mailhog
