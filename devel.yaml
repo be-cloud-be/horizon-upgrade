@@ -1,19 +1,6 @@
 version: "2.4"
 
 services:
-  odoo_proxy:
-    image: tecnativa/whitelist
-    depends_on:
-      - odoo
-    networks: &public
-      default:
-      public:
-    ports:
-      - "127.0.0.1:11899:6899"
-      - "127.0.0.1:11069:8069"
-    environment:
-      PORT: "6899 8069"
-      TARGET: odoo
 
   odoo:
     extends:
@@ -34,7 +21,7 @@ services:
       DOODBA_ENVIRONMENT: "${DOODBA_ENVIRONMENT-devel}"
       LIST_DB: "true"
       DEBUGPY_ENABLE: "${DOODBA_DEBUGPY_ENABLE:-0}"
-      PGDATABASE: &dbname devel
+      PGDATABASE: &dbname odoo_v11
       PYTHONDONTWRITEBYTECODE: 1
       PYTHONOPTIMIZE: ""
       PYTHONPATH: /opt/odoo/custom/src/odoo
