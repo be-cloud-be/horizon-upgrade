@@ -76,9 +76,9 @@ services:
     image: sosedoff/pgweb
     networks: *public
     ports:
-      - "127.0.0.1:11081:8081"
+      - "11081:8081"
     environment:
-      DATABASE_URL: postgres://odoo:odoopassword@db:5432/devel?sslmode=disable
+      DATABASE_URL: postgres://odoo:odoopassword@db:5432/odoo_v11?sslmode=disable
     depends_on:
       - db
 
