@@ -63,7 +63,7 @@ services:
       - --workers=0
       - --dev=reload,qweb,werkzeug,xml
       - --stop-after-init
-      - --update all
+      - --update=all
 
   db:
     extends:
