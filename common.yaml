@@ -22,15 +22,14 @@ services:
       - ~/odoo_v11_data:/var/lib/odoo:z
 
   db:
-    image: ghcr.io/tecnativa/postgres-autoconf:9.6-alpine
-    shm_size: 512mb
+    image: postgres:9.6-alpine
     environment:
-      POSTGRES_DB: *dbname
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_PASSWORD: odoopassword
       POSTGRES_USER: *dbuser
-      CONF_EXTRA: |
-        work_mem = 32MB
+    command: ["-c", "shared_buffers=256MB", "-c", "max_connections=200", "-c", "max_wal_size=4GB"]
     volumes:
-      - ~/postgresql_data/:/var/lib/postgresql/data/:z
+    - ~/postgresql_data/:/var/lib/postgresql/data/:z
 
   smtpfake:
     image: mailhog/mailhog
