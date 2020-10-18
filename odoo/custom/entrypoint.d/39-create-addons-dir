@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import os
+from glob import iglob
+
+from doodbalib import ADDONS_DIR, ADDONS_YAML, SRC_DIR, addons_config, logger
+
+logger.info("Creates addons dir %s", ADDONS_DIR)
+
+try: 
+    os.mkdir(ADDONS_DIR) 
+except OSError as error: 
+    logger.debug("Directory exists : %s", error)
