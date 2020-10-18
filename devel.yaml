@@ -156,7 +156,3 @@ networks:
   default:
     internal: true
   public:
-
-volumes:
-  filestore:
-  db:
