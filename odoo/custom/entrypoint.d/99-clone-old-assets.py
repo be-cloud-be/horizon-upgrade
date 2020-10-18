@@ -87,7 +87,7 @@ else:
     logging.info('Dumping the source database into the target.')
     logging.debug(
         subprocess.check_output(
-            'pg_dump -h db_old -Fc "%s" | pg_restore -h db -d "%s"' % (
+            'pg_dump -h db -Fc "%s" | pg_restore -h db -d "%s"' % (
                 DB_SOURCE, DB_TARGET,
             ),
             shell=True,
