@@ -10,13 +10,16 @@ services:
         GID: "${GID:-1000}"
     environment:
       EMAIL_FROM: ""
+      DB_SOURCE: odoo_v9
+      DB_TARGET: odoo_v10
       PGDATABASE: &dbname odoo_v11
       PGUSER: &dbuser "odoo"
       DB_FILTER: ".*"
       PROXY_MODE: "false"
     tty: true
     volumes:
-      - filestore:/var/lib/odoo:z
+      - ~/odoo_v10_data:/var/lib/odoo_old:z
+      - ~/odoo_v11_data:/var/lib/odoo:z
 
   db:
     image: ghcr.io/tecnativa/postgres-autoconf:9.6-alpine
