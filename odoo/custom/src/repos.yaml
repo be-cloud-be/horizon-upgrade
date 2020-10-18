@@ -10,7 +10,7 @@ odoo:
     odoo: https://github.com/odoo/odoo.git
     openupgrade: https://github.com/OCA/OpenUpgrade.git
   # $ODOO_VERSION is... the Odoo version! "11.0" or similar
-  target: origin $ODOO_VERSION
+  target: odoo $ODOO_VERSION
   merges:
     - odoo $ODOO_VERSION
     - odoo refs/pull/25594/head # Expose `Field` from search_filters.js
