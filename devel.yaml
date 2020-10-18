@@ -56,14 +56,11 @@ services:
       - wdb
     command:
       - odoo
-      - -d odoo_v11
       - --limit-memory-soft=0
       - --limit-time-real-cron=9999999
       - --limit-time-real=9999999
       - --workers=0
       - --dev=reload,qweb,werkzeug,xml
-      - --stop-after-init
-      - --update=all
 
   db:
     extends:
@@ -155,6 +152,9 @@ services:
       TARGET: www.gravatar.com
       PRE_RESOLVE: 1
 
+networks:
+  default:
+    internal: true
 networks:
   default:
     internal: true
