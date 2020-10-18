@@ -10,8 +10,8 @@ services:
         GID: "${GID:-1000}"
     environment:
       EMAIL_FROM: ""
-      DB_SOURCE: odoo_v9
-      DB_TARGET: odoo_v10
+      DB_SOURCE: odoo_v10
+      DB_TARGET: odoo_v11
       PGDATABASE: &dbname odoo_v11
       PGUSER: &dbuser "odoo"
       DB_FILTER: ".*"
