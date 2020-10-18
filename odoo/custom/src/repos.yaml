@@ -10,9 +10,9 @@ odoo:
     odoo: https://github.com/odoo/odoo.git
     openupgrade: https://github.com/OCA/OpenUpgrade.git
   # $ODOO_VERSION is... the Odoo version! "11.0" or similar
-  target: odoo $ODOO_VERSION
+  target: openupgrade $ODOO_VERSION
   merges:
-    - odoo $ODOO_VERSION
+    - openupgrade $ODOO_VERSION
 
 web:
   defaults:
