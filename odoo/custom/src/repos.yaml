@@ -37,7 +37,7 @@ partner-contact:
   merges:
     - partner-contact $ODOO_VERSION
 
-./horizon:
+horizon:
   defaults:
     # Shallow repositories (1=1) are faster & thinner
     # You may need a bigger depth when merging PRs
