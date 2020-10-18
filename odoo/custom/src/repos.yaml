@@ -7,13 +7,12 @@ odoo:
     # You can use any integer value, OTOH.
     depth: $DEPTH_MERGE
   remotes:
-    origin: https://github.com/OCA/OCB.git
     odoo: https://github.com/odoo/odoo.git
     openupgrade: https://github.com/OCA/OpenUpgrade.git
   # $ODOO_VERSION is... the Odoo version! "11.0" or similar
   target: origin $ODOO_VERSION
   merges:
-    - origin $ODOO_VERSION
+    - odoo $ODOO_VERSION
     - odoo refs/pull/25594/head # Expose `Field` from search_filters.js
 
 web:
@@ -26,3 +25,39 @@ web:
   merges:
     - origin $ODOO_VERSION
     - origin refs/pull/1007/head # web_responsive search
+    
+partner-contact:
+  defaults:
+    # Shallow repositories (1=1) are faster & thinner
+    # You may need a bigger depth when merging PRs
+    depth: "$DEPTH_DEFAULT"
+  remotes:
+    partner-contact: https://github.com/OCA/partner-contact.git
+  target:
+    partner-contact $ODOO_VERSION
+  merges:
+    - partner-contact $ODOO_VERSION
+
+./horizon:
+  defaults:
+    # Shallow repositories (1=1) are faster & thinner
+    # You may need a bigger depth when merging PRs
+    depth: "$DEPTH_DEFAULT"
+  remotes:
+    horizon: https://github.com/be-cloud-be/horizon.git
+  target:
+    horizon $ODOO_VERSION
+  merges:
+    - horizon $ODOO_VERSION
+    
+server-tools:
+  defaults:
+    # Shallow repositories (1=1) are faster & thinner
+    # You may need a bigger depth when merging PRs
+    depth: "$DEPTH_DEFAULT"
+  remotes:
+    server-tools: https://github.com/OCA/server-tools.git
+  target:
+    server-tools $ODOO_VERSION
+  merges:
+    - server-tools $ODOO_VERSION
