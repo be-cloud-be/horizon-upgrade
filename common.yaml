@@ -18,8 +18,8 @@ services:
       PROXY_MODE: "false"
     tty: true
     volumes:
-      - ~/odoo_v10_data:/var/lib/odoo_old:z
-      - ~/odoo_v11_data:/var/lib/odoo:z
+      - ~/odoo_v11_data:/var/lib/odoo_old:z
+      - ~/odoo_v12_data:/var/lib/odoo:z
 
   db:
     image: postgres:9.6-alpine
