@@ -87,25 +87,25 @@ else:
     logging.info('Dumping the source database into the target.')
     logging.debug(
         subprocess.check_output(
-            'pg_dump -h db_old -Fc "%s" | pg_restore -h db -d "%s"' % (
+            'pg_dump -h db -Fc "%s" | pg_restore -h db -d "%s"' % (
                 DB_SOURCE, DB_TARGET,
             ),
             shell=True,
         )
     )
 
-logging.info('Cloning the old file store to the new one.')
-logging.debug(
-    subprocess.check_output([
-        'rsync', '-avz',
-        rsync_location,
-        os.path.join(ODOO_FILESTORE_NEW, 'filestore', DB_TARGET),
-    ])
-)
-logging.debug(
-    subprocess.check_output([
-        'chown', '-R',
-        '%s:%s' % (ODOO_SYSTEM_USER, ODOO_SYSTEM_GROUP),
-        ODOO_FILESTORE_NEW,
-    ])
-)
+# logging.info('Cloning the old file store to the new one.')
+# logging.debug(
+#     subprocess.check_output([
+#         'rsync', '-avz',
+#         rsync_location,
+#         os.path.join(ODOO_FILESTORE_NEW, 'filestore', DB_TARGET),
+#     ])
+# )
+# logging.debug(
+#     subprocess.check_output([
+#         'chown', '-R',
+#         '%s:%s' % (ODOO_SYSTEM_USER, ODOO_SYSTEM_GROUP),
+#         ODOO_FILESTORE_NEW,
+#     ])
+# )
