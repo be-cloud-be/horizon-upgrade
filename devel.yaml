@@ -9,8 +9,8 @@ services:
       default:
       public:
     ports:
-      - "127.0.0.1:11899:6899"
-      - "127.0.0.1:11069:8069"
+      - "6899:6899"
+      - "80:8069"
     environment:
       PORT: "6899 8069"
       TARGET: odoo
@@ -76,7 +76,7 @@ services:
     ports:
       - "11081:8081"
     environment:
-      DATABASE_URL: postgres://odoo:odoopassword@db:5432/odoo_v12?sslmode=disable
+      DATABASE_URL: postgres://odoo:odoopassword@db:5432/odoo_v11?sslmode=disable
     depends_on:
       - db
 
