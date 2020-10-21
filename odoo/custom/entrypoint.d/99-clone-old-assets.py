@@ -25,11 +25,13 @@ if os.environ.get('DB_SOURCE') :
     ODOO_SYSTEM_GROUP = os.environ.get('ODOO_SYSTEM_GROUP', 'odoo')
     
     logging.info('Create empty directories for the file stores if non-existent or make it empty if exists.')
-    logging.debug(
+    logging.info(
         subprocess.check_output([
             'mkdir', '-p',
             '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET)
         ])
+    )
+    logging.info(
         subprocess.check_output([
             'rm', '-rf',
             '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET)
@@ -47,6 +49,8 @@ if os.environ.get('DB_SOURCE') :
     # (Re-)Create the target database
     logging.debug(
         subprocess.check_output(['dropdb', '-h', 'db', DB_TARGET])
+    )
+    logging.debug(
         subprocess.check_output(['createdb', '-h', 'db', DB_TARGET])
     )
     
