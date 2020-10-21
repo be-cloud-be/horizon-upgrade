@@ -42,7 +42,7 @@ services:
       WDB_WEB_PORT: "11984"
       # To avoid installing demo data export DOODBA_WITHOUT_DEMO=all
       WITHOUT_DEMO: "${DOODBA_WITHOUT_DEMO-false}"
-      ODOO_DB_RESTORE: "1"
+      # ODOO_DB_RESTORE: "1"
       ODOO_DB_COPY: "1"
       ODOO_FILESTORE_COPY: "1"
     volumes:
