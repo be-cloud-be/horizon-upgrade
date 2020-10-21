@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
-import logging
 import os
 import requests
 import subprocess
+
+from doodbalib import ADDONS_DIR, ADDONS_YAML, SRC_DIR, addons_config, logger as logging
 
 DB_SOURCE = os.environ.get('DB_SOURCE', 'odoo')
 DB_TARGET = os.environ.get('DB_TARGET', 'odoo')
