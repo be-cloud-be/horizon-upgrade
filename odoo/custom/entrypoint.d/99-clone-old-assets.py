@@ -4,7 +4,7 @@ import os
 import requests
 import subprocess
 
-from doodbalib import ADDONS_DIR, ADDONS_YAML, SRC_DIR, addons_config, logger as logging
+from doodbalib import ADDONS_DIR, ADDONS_YAML, SRC_DIR, addons_config, logger
 
 from io import BytesIO
 from zipfile import ZipFile
@@ -24,21 +24,21 @@ if os.environ.get('DB_SOURCE') :
     ODOO_SYSTEM_USER = os.environ.get('ODOO_SYSTEM_USER', 'odoo')
     ODOO_SYSTEM_GROUP = os.environ.get('ODOO_SYSTEM_GROUP', 'odoo')
     
-    logging.info('Create empty directories for the file stores if non-existent or make it empty if exists.')
-    logging.info(
+    logger.info('Create empty directories for the file stores if non-existent or make it empty if exists.')
+    logger.info(
         subprocess.check_output([
             'mkdir', '-p',
             '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET)
         ])
     )
-    logging.info(
+    logger.info(
         subprocess.check_output([
             'rm', '-rf',
             '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET)
         ])
     )
     
-    logging.info('Setup the PostgreSQL credentials file.')
+    logger.info('Setup the PostgreSQL credentials file.')
     path = '%s/.pgpass' % os.path.expanduser('~')
     with os.fdopen(os.open(path, os.O_CREAT | os.O_WRONLY, 0o600), 'w') as fh:
         fh.writelines([
@@ -47,20 +47,20 @@ if os.environ.get('DB_SOURCE') :
         ])
     
     # (Re-)Create the target database
-    logging.debug(
+    logger.debug(
         subprocess.check_output(['dropdb', '-h', 'db', DB_TARGET])
     )
-    logging.debug(
+    logger.debug(
         subprocess.check_output(['createdb', '-h', 'db', DB_TARGET])
     )
     
     if os.environ.get('ODOO_DB_BACKUP'):
         
-        logging.info('Restore the database backup into the source database.')
-        logging.debug(
+        logger.info('Restore the database backup into the source database.')
+        logger.debug(
             subprocess.check_output(['createdb', '-h', 'db', DB_SOURCE])
         )
-        logging.debug(
+        logger.debug(
             subprocess.check_output(
                 'psql -h db -d "%s" < %s/dump.sql' % (
                     DB_SOURCE, ODOO_FILESTORE_OLD,
@@ -71,8 +71,8 @@ if os.environ.get('DB_SOURCE') :
     
     """Copy the backup from another database."""
     
-    logging.info('Dumping the source database into the target.')
-    logging.debug(
+    logger.info('Dumping the source database into the target.')
+    logger.debug(
         subprocess.check_output(
             'pg_dump -h db -Fc "%s" | pg_restore -h db -d "%s"' % (
                 DB_SOURCE, DB_TARGET,
@@ -81,17 +81,17 @@ if os.environ.get('DB_SOURCE') :
         )
     )
 
-    logging.info('Cloning the old file store to the new one.')
-    logging.debug(
+    logger.info('Cloning the old file store to the new one.')
+    logger.debug(
         subprocess.check_output([
             'cp', '-rf',
-            '%s/filestore/%s' % (ODOO_FILESTORE_OLD, DB_SOURCE)
+            '%s/filestore/%s' % (ODOO_FILESTORE_OLD, DB_SOURCE),
             '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET)
         ])
     )
     
-    logging.info('Fix ownership in the new one, just in case.')
-    logging.debug(
+    logger.info('Fix ownership in the new one, just in case.')
+    logger.debug(
         subprocess.check_output([
             'chown', '-R',
             '%s:%s' % (ODOO_SYSTEM_USER, ODOO_SYSTEM_GROUP),
