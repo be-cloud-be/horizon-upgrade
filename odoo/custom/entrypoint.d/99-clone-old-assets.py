@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 
+import logging
 import os
 import requests
 import subprocess
-
-from doodbalib import ADDONS_DIR, ADDONS_YAML, SRC_DIR, addons_config, logger
 
 from io import BytesIO
 from zipfile import ZipFile
@@ -23,15 +22,15 @@ ODOO_UPDATE = os.environ.get('ODOO_UPDATE', 'all')
 ODOO_SYSTEM_USER = os.environ.get('ODOO_SYSTEM_USER', 'odoo')
 ODOO_SYSTEM_GROUP = os.environ.get('ODOO_SYSTEM_GROUP', 'odoo')
 
+logger.info('Setup the PostgreSQL credentials file.')
+path = '%s/.pgpass' % os.path.expanduser('~')
+with os.fdopen(os.open(path, os.O_CREAT | os.O_WRONLY, 0o600), 'w') as fh:
+    fh.writelines([
+        'db:5432:%s:%s:%s' % (DB_TARGET, PGUSER, PGPASSWORD),
+        'db:5432:%s:%s:%s' % (DB_SOURCE, PGUSER_OLD, PGPASSWORD_OLD),
+    ])
+
 if os.environ.get('ODOO_DB_RESTORE') :
-    
-    logger.info('Setup the PostgreSQL credentials file.')
-    path = '%s/.pgpass' % os.path.expanduser('~')
-    with os.fdopen(os.open(path, os.O_CREAT | os.O_WRONLY, 0o600), 'w') as fh:
-        fh.writelines([
-            'db:5432:%s:%s:%s' % (DB_TARGET, PGUSER, PGPASSWORD),
-            'db:5432:%s:%s:%s' % (DB_SOURCE, PGUSER_OLD, PGPASSWORD_OLD),
-        ])
     
     logger.info('Restore the database backup into the source database.')
     logger.debug(
@@ -50,7 +49,7 @@ if os.environ.get('ODOO_DB_COPY') :
     
     # (Re-)Create the target database
     logger.debug(
-        subprocess.check_output(['dropdb', '-h', 'db', DB_TARGET])
+        subprocess.run(['dropdb', '-h', 'db', DB_TARGET])
     )
     logger.debug(
         subprocess.check_output(['createdb', '-h', 'db', DB_TARGET])
@@ -88,8 +87,36 @@ if os.environ.get('ODOO_FILESTORE_COPY') :
     logger.debug(
         subprocess.check_output([
             'cp', '-rf',
+<<<<<<<<< saved version
+        )
+    )
+    
+if os.environ.get('ODOO_FILESTORE_COPY') :
+    
+    logger.info('Create empty directories for the file stores if non-existent or make it empty if exists.')
+    logger.info(
+        subprocess.check_output([
+            'mkdir', '-p',
+            '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET)
+        ])
+    )
+    logger.info(
+        subprocess.check_output([
+            'rm', '-rf',
+            '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET)
+        ])
+    )
+
+    logger.info('Cloning the old file store to the new one.')
+    logger.debug(
+        subprocess.check_output([
+            'cp', '-rf',
             '%s/filestore/%s' % (ODOO_FILESTORE_OLD, DB_SOURCE),
             '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET)
+=========
+            '%s' % ODOO_FILESTORE_OLD
+            '%s' % ODOO_FILESTORE_NEW
+>>>>>>>>> local version
         ])
     )
     
