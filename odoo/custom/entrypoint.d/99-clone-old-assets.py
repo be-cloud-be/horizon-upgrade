@@ -50,6 +50,21 @@ if os.environ.get('DB_SOURCE') :
         subprocess.check_output(['createdb', '-h', 'db', DB_TARGET])
     )
     
+    if os.environ.get('ODOO_DB_BACKUP'):
+        
+        logging.info('Restore the database backup into the source database.')
+        logging.debug(
+            subprocess.check_output(['createdb', '-h', 'db', DB_SOURCE])
+        )
+        logging.debug(
+            subprocess.check_output(
+                'psql -h db -d "%s" < %s/dump.sql' % (
+                    DB_SOURCE, ODOO_FILESTORE_OLD,
+                ),
+                shell=True,
+            )
+        )
+    
     """Copy the backup from another database."""
     
     logging.info('Dumping the source database into the target.')
