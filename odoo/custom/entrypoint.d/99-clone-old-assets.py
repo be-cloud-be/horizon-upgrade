@@ -87,36 +87,8 @@ if os.environ.get('ODOO_FILESTORE_COPY') :
     logger.debug(
         subprocess.check_output([
             'cp', '-rf',
-<<<<<<<<< saved version
-        )
-    )
-    
-if os.environ.get('ODOO_FILESTORE_COPY') :
-    
-    logger.info('Create empty directories for the file stores if non-existent or make it empty if exists.')
-    logger.info(
-        subprocess.check_output([
-            'mkdir', '-p',
-            '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET)
-        ])
-    )
-    logger.info(
-        subprocess.check_output([
-            'rm', '-rf',
-            '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET)
-        ])
-    )
-
-    logger.info('Cloning the old file store to the new one.')
-    logger.debug(
-        subprocess.check_output([
-            'cp', '-rf',
             '%s/filestore/%s' % (ODOO_FILESTORE_OLD, DB_SOURCE),
             '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET)
-=========
-            '%s' % ODOO_FILESTORE_OLD
-            '%s' % ODOO_FILESTORE_NEW
->>>>>>>>> local version
         ])
     )
     
