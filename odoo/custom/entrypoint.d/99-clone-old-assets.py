@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
-import logging
 import os
 import requests
 import subprocess
+
+from doodbalib import ADDONS_DIR, ADDONS_YAML, SRC_DIR, addons_config, logger
 
 from io import BytesIO
 from zipfile import ZipFile
@@ -22,15 +23,15 @@ ODOO_UPDATE = os.environ.get('ODOO_UPDATE', 'all')
 ODOO_SYSTEM_USER = os.environ.get('ODOO_SYSTEM_USER', 'odoo')
 ODOO_SYSTEM_GROUP = os.environ.get('ODOO_SYSTEM_GROUP', 'odoo')
 
-logger.info('Setup the PostgreSQL credentials file.')
-path = '%s/.pgpass' % os.path.expanduser('~')
-with os.fdopen(os.open(path, os.O_CREAT | os.O_WRONLY, 0o600), 'w') as fh:
-    fh.writelines([
-        'db:5432:%s:%s:%s' % (DB_TARGET, PGUSER, PGPASSWORD),
-        'db:5432:%s:%s:%s' % (DB_SOURCE, PGUSER_OLD, PGPASSWORD_OLD),
-    ])
-
 if os.environ.get('ODOO_DB_RESTORE') :
+    
+    logger.info('Setup the PostgreSQL credentials file.')
+    path = '%s/.pgpass' % os.path.expanduser('~')
+    with os.fdopen(os.open(path, os.O_CREAT | os.O_WRONLY, 0o600), 'w') as fh:
+        fh.writelines([
+            'db:5432:%s:%s:%s' % (DB_TARGET, PGUSER, PGPASSWORD),
+            'db:5432:%s:%s:%s' % (DB_SOURCE, PGUSER_OLD, PGPASSWORD_OLD),
+        ])
     
     logger.info('Restore the database backup into the source database.')
     logger.debug(
