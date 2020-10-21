@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
-import logging
 import os
 import requests
 import subprocess
+
+from doodbalib import ADDONS_DIR, ADDONS_YAML, SRC_DIR, addons_config, logger as logging
 
 from io import BytesIO
 from zipfile import ZipFile
