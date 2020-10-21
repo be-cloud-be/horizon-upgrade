@@ -80,8 +80,8 @@ if os.environ.get('DB_SOURCE') :
     logging.debug(
         subprocess.check_output([
             'cp', '-rf',
-            '%s' % ODOO_FILESTORE_OLD
-            '%s' % ODOO_FILESTORE_NEW
+            '%s/filestore/%s' % (ODOO_FILESTORE_OLD, DB_SOURCE)
+            '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET)
         ])
     )
     
