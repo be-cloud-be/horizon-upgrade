@@ -1,6 +1,9 @@
 web:
   - "*" # All web addons
 
+reporting-engine:
+  - report_xlsx
+
 server-tools:
   - "base_*" # base server-tools addons
 

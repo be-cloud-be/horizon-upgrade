@@ -22,6 +22,15 @@ web:
   target: origin $ODOO_VERSION
   merges:
     - origin $ODOO_VERSION
+
+reporting-engine:
+  defaults:
+    depth: $DEPTH_MERGE
+  remotes:
+    origin: https://github.com/OCA/reporting-engine.git
+  target: origin $ODOO_VERSION
+  merges:
+    - origin $ODOO_VERSION
     
 partner-contact:
   defaults:

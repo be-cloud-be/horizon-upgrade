@@ -7,7 +7,6 @@ import click_odoo
 @click.command()
 @click_odoo.env_options(default_log_level='error')
 def main(env):
-    env['ir.module.module'].search([('name', '=', 'report_xlsx')]).button_immediate_uninstall()
     env['ir.module.module'].search([('name', '=', 'v9c_backend_theme')]).button_immediate_uninstall()
     env['ir.module.module'].search([('name', '=', 'mail_ir_attachement')]).button_immediate_uninstall()
     env['ir.module.module'].search([('name', '=', 'account_bank_statement_import_multiline')]).button_immediate_uninstall()
