@@ -4,7 +4,7 @@ import os
 import requests
 import subprocess
 
-from doodbalib import ADDONS_DIR, ADDONS_YAML, SRC_DIR, addons_config, logger as logging
+from doodbalib import ADDONS_DIR, ADDONS_YAML, SRC_DIR, addons_config, logger
 
 DB_SOURCE = os.environ.get('DB_SOURCE', 'odoo')
 DB_TARGET = os.environ.get('DB_TARGET', 'odoo')
@@ -22,8 +22,8 @@ ODOO_SYSTEM_GROUP = os.environ.get('ODOO_SYSTEM_GROUP', 'odoo')
 
 if os.environ.get('DB_SOURCE') :
     
-    logging.info('FIX mail_message_res_partner_needaction_rel.')
-    logging.debug(
+    logger.info('FIX mail_message_res_partner_needaction_rel.')
+    logger.debug(
         subprocess.check_output(
             'psql -h db -d "%s" -c "delete from mail_message_res_partner_needaction_rel where mail_message_id not in (select id from mail_message);"' % (
                 DB_SOURCE,
@@ -31,7 +31,7 @@ if os.environ.get('DB_SOURCE') :
             shell=True,
         )
     )
-    logging.debug(
+    logger.debug(
         subprocess.check_output(
             'psql -h db -d "%s" -c "delete from mail_message_res_partner_needaction_rel where res_partner_id not in (select id from res_partner);"' % (
                 DB_SOURCE, 
