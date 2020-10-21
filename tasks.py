@@ -12,7 +12,7 @@ from shutil import which
 
 from invoke import task
 
-ODOO_VERSION = 10.0
+ODOO_VERSION = 9.0
 PROJECT_ROOT = Path(__file__).parent.absolute()
 SRC_PATH = PROJECT_ROOT / "odoo" / "custom" / "src"
 UID_ENV = {"GID": str(os.getgid()), "UID": str(os.getuid()), "UMASK": "27"}

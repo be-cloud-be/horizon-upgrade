@@ -76,7 +76,7 @@ services:
     ports:
       - "11081:8081"
     environment:
-      DATABASE_URL: postgres://odoo:odoopassword@db:5432/odoo_v10?sslmode=disable
+      DATABASE_URL: postgres://odoo:odoopassword@db:5432/odoo_v9?sslmode=disable
     depends_on:
       - db
 
