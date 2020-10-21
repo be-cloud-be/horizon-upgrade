@@ -27,12 +27,11 @@ if os.environ.get('DB_SOURCE') :
     logging.debug(
         subprocess.check_output([
             'mkdir', '-p',
-            '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET),
-            ODOO_FILESTORE_OLD,
+            '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET)
         ])
         subprocess.check_output([
             'rm', '-rf',
-            '%s' % ODOO_FILESTORE_NEW
+            '%s/filestore/%s' % (ODOO_FILESTORE_NEW, DB_TARGET)
         ])
     )
     
