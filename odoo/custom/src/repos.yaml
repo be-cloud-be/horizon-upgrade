@@ -8,10 +8,11 @@ odoo:
     depth: $DEPTH_MERGE
   remotes:
     openupgrade: https://github.com/OCA/OpenUpgrade.git
+    odoo: https://github.com/odoo/odoo.git
   # $ODOO_VERSION is... the Odoo version! "11.0" or similar
-  target: openupgrade $ODOO_VERSION
+  target: $ODOO_ORIGIN $ODOO_VERSION
   merges:
-    - openupgrade $ODOO_VERSION
+    - $ODOO_ORIGIN $ODOO_VERSION
 
 web:
   defaults:

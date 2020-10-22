@@ -6,6 +6,7 @@ services:
       context: ./odoo
       args:
         ODOO_VERSION: "13.0"
+        ODOO_ORIGIN: "openupgrade"
         UID: "${UID:-1000}"
         GID: "${GID:-1000}"
     environment:
