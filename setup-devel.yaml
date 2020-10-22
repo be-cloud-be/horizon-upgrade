@@ -17,6 +17,7 @@ services:
         AGGREGATE: "false"
         DEPTH_DEFAULT: 100
         ODOO_VERSION: "13.0"
+        ODOO_ORIGIN: "openupgrade"
         PYTHONOPTIMIZE: ""
         PIP_INSTALL_ODOO: "false"
         CLEAN: "false"
