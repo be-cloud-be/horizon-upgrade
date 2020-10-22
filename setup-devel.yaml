@@ -34,6 +34,7 @@ services:
       UID: "${UID:-1000}"
       GID: "${GID:-1000}"
       UMASK: "$UMASK"
+      ODOO_ORIGIN: "openupgrade"
     user: root
     entrypoint: autoaggregate
 
