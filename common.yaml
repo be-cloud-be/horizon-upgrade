@@ -16,6 +16,8 @@ services:
       PGUSER: &dbuser "odoo"
       DB_FILTER: ".*"
       PROXY_MODE: "false"
+      ODOO_DB_RESTORE : 1
+      
     tty: true
     volumes:
       - ~/odoo_v8_data:/var/lib/odoo_old:z
