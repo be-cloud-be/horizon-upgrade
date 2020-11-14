@@ -49,9 +49,12 @@ if os.environ.get('ODOO_DB_RESTORE') :
 if os.environ.get('ODOO_DB_COPY') :
     
     # (Re-)Create the target database
-    logger.debug(
-        subprocess.run(['dropdb', '-h', 'db', DB_TARGET], check=False)
-    )
+    try:
+        logger.debug(
+            subprocess.check_output(['dropdb', '-h', 'db', DB_TARGET], check=False)
+        )
+    except subprocess.CalledProcessError as e:
+        print(e.output)
     logger.debug(
         subprocess.check_output(['createdb', '-h', 'db', DB_TARGET])
     )
