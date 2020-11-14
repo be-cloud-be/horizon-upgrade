@@ -5,7 +5,7 @@ services:
     build:
       context: ./odoo
       args:
-        ODOO_VERSION: "9.0"
+        ODOO_VERSION: "10.0"
         UID: "${UID:-1000}"
         GID: "${GID:-1000}"
     environment:
@@ -22,7 +22,7 @@ services:
       - ~/odoo_v9_data:/var/lib/odoo:z
 
   db:
-    image: postgres:9.6-alpine
+    image: postgres:12-alpine
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_PASSWORD: odoopassword
