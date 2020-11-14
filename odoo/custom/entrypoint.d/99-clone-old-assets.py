@@ -50,7 +50,7 @@ if os.environ.get('ODOO_DB_COPY') :
     
     # (Re-)Create the target database
     logger.debug(
-        subprocess.check_output(['dropdb', '-h', 'db', DB_TARGET])
+        subprocess.run(['dropdb', '-h', 'db', DB_TARGET])
     )
     logger.debug(
         subprocess.check_output(['createdb', '-h', 'db', DB_TARGET])
