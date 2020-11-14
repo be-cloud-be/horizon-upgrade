@@ -5,13 +5,12 @@ services:
     build:
       context: ./odoo
       args:
-        ODOO_VERSION: "10.0"
+        ODOO_VERSION: "9.0"
         UID: "${UID:-1000}"
         GID: "${GID:-1000}"
     environment:
       EMAIL_FROM: ""
-      DB_SOURCE: "odoo_v8"
-      DB_TARGET: "odoo_v9"
+      DB_SOURCE: "odoo_v9"
       PGDATABASE: &dbname "odoo_v9"
       PGUSER: &dbuser "odoo"
       DB_FILTER: ".*"
@@ -20,7 +19,6 @@ services:
       
     tty: true
     volumes:
-      - ~/odoo_v8_data:/var/lib/odoo_old:z
       - ~/odoo_v9_data:/var/lib/odoo:z
 
   db:
