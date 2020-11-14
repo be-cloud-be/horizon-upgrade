@@ -10,15 +10,11 @@ from io import BytesIO
 from zipfile import ZipFile
 
 DB_SOURCE = os.environ.get('DB_SOURCE', 'odoo')
-DB_TARGET = os.environ.get('DB_TARGET', 'odoo')
 
 PGUSER = os.environ.get('PGUSER', 'odoo')
 PGPASSWORD = os.environ.get('PGPASSWORD')
-PGUSER_OLD = os.environ.get('PGUSER_OLD', PGUSER)
-PGPASSWORD_OLD = os.environ.get('PGPASSWORD_OLD', PGPASSWORD)
 
 ODOO_FILESTORE_NEW = os.environ.get('ODOO_FILESTORE_NEW', '/var/lib/odoo')
-ODOO_FILESTORE_OLD = os.environ.get('ODOO_FILESTORE_OLD', '/var/lib/odoo_old')
 ODOO_UPDATE = os.environ.get('ODOO_UPDATE', 'all')
 ODOO_SYSTEM_USER = os.environ.get('ODOO_SYSTEM_USER', 'odoo')
 ODOO_SYSTEM_GROUP = os.environ.get('ODOO_SYSTEM_GROUP', 'odoo')
@@ -30,7 +26,6 @@ if os.environ.get('ODOO_DB_RESTORE') :
     with os.fdopen(os.open(path, os.O_CREAT | os.O_WRONLY, 0o600), 'w') as fh:
         fh.writelines([
             'db:5432:%s:%s:%s' % (DB_TARGET, PGUSER, PGPASSWORD),
-            'db:5432:%s:%s:%s' % (DB_SOURCE, PGUSER_OLD, PGPASSWORD_OLD),
         ])
     
     logger.info('Restore the database backup into the source database.')
@@ -40,7 +35,7 @@ if os.environ.get('ODOO_DB_RESTORE') :
     logger.debug(
         subprocess.check_output(
             'psql -h db -d "%s" < %s/dump.sql' % (
-                DB_SOURCE, ODOO_FILESTORE_OLD,
+                DB_SOURCE, ODOO_FILESTORE_NEW,
             ),
             shell=True,
         )
