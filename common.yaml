@@ -22,7 +22,7 @@ services:
       - ~/odoo_v12_data:/var/lib/odoo:z
 
   db:
-    image: postgres:9.6-alpine
+    image: postgres:12-alpine
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_PASSWORD: odoopassword
