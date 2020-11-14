@@ -5,7 +5,7 @@ reporting-engine:
   - report_xlsx
 
 server-tools:
-  - "*" # base server-tools addons
+  - "base*" # base server-tools addons
 
 partner-contact:
   - "*" # All partner-contact addons
