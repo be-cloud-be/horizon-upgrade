@@ -30,6 +30,9 @@ def main(env):
 
     env['ir.module.module'].search([('name', '=', 'school_student_group'),("state",'=','installed')]).button_immediate_uninstall()
     env['ir.module.module'].search([('name', '=', 'school_student_group_classroom'),("state",'=','installed')]).button_immediate_uninstall()
+    env['ir.module.module'].search([('name', '=', 'school_split_cg_tool'),("state",'=','installed')]).button_immediate_uninstall()
+    env['ir.module.module'].search([('name', '=', 'school_documentation'),("state",'=','installed')]).button_immediate_uninstall()
+    env['ir.module.module'].search([('name', '=', 'school_diploma'),("state",'=','installed')]).button_immediate_uninstall()
     
     env['ir.filters'].search([('id','=','62')]).unlink()
     env['res.groups'].search([('category_id.id','=','23')]).unlink()
