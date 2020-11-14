@@ -25,7 +25,7 @@ if os.environ.get('ODOO_DB_RESTORE') :
     path = '%s/.pgpass' % os.path.expanduser('~')
     with os.fdopen(os.open(path, os.O_CREAT | os.O_WRONLY, 0o600), 'w') as fh:
         fh.writelines([
-            'db:5432:%s:%s:%s' % (DB_TARGET, PGUSER, PGPASSWORD),
+            'db:5432:%s:%s:%s' % (DB_SOURCE, PGUSER, PGPASSWORD),
         ])
     
     logger.info('Restore the database backup into the source database.')
