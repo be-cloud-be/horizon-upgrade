@@ -9,7 +9,7 @@ import click_odoo
 def main(env):
     for rec in env['school.program'].search([]) :
         if not rec.uid:
-            rec.uid = 'PROG-%05d' % rec.id
+            rec.uid = 'CYC-%05d' % rec.id
     for rec in env['school.bloc'].search([]) :
         if not rec.uid:
             rec.uid = 'BLOC-%05d' % rec.id
@@ -19,5 +19,17 @@ def main(env):
     for rec in env['school.course'].search([]) :
         if not rec.uid:
             rec.uid = 'AA-%05d' % rec.id
+    for rec in env['school.individual_program'].search([]) :
+        if not rec.uid:
+            rec.uid = 'CIE-%05d' % rec.id
+    for rec in env['school.individual_bloc'].search([]) :
+        if not rec.uid:
+            rec.uid = 'PAE-%05d' % rec.id
+    for rec in env['school.individual_course_group'].search([]) :
+        if not rec.uid:
+            rec.uid = 'UEI-%05d' % rec.id
+    for rec in env['school.individual_course'].search([]) :
+        if not rec.uid:
+            rec.uid = 'AAI-%05d' % rec.id
 if __name__ == '__main__':
     main()
