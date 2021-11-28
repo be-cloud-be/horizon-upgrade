@@ -30,6 +30,9 @@ if os.environ.get('ODOO_DB_RESTORE') :
     
     logger.info('Restore the database backup into the source database.')
     logger.debug(
+        subprocess.check_output(['dropdb', '-h', 'db', DB_SOURCE])
+    )
+    logger.debug(
         subprocess.check_output(['createdb', '-h', 'db', DB_SOURCE])
     )
     logger.debug(
