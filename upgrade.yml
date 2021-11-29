@@ -61,6 +61,20 @@ services:
       POSTGRES_DB: *dbname
       POSTGRES_PASSWORD: odoopassword
 
+volumes:
+  filestore:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ~/odoo_v14_data
+  db:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ~/postgresql_data
+
 networks:
   default:
     internal: true
