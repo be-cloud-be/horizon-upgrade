@@ -2,15 +2,15 @@ version: "2.4"
 
 services:
   odoo_proxy:
-    image: tecnativa/whitelist
+    image: ghcr.io/tecnativa/docker-whitelist:latest
     depends_on:
       - odoo
     networks: &public
       default:
       public:
     ports:
-      - "6899:6899"
-      - "80:8069"
+      - "127.0.0.1:14899:6899"
+      - "127.0.0.1:14069:8069"
     environment:
       PORT: "6899 8069"
       TARGET: odoo
@@ -34,24 +34,25 @@ services:
       DOODBA_ENVIRONMENT: "${DOODBA_ENVIRONMENT-devel}"
       LIST_DB: "true"
       DEBUGPY_ENABLE: "${DOODBA_DEBUGPY_ENABLE:-0}"
-      PGDATABASE: &dbname "odoo_v13"
+      PGDATABASE: &dbname devel
       PYTHONDONTWRITEBYTECODE: 1
       PYTHONOPTIMIZE: ""
       PYTHONPATH: /opt/odoo/custom/src/odoo
       SMTP_PORT: "1025"
-      WDB_WEB_PORT: "11984"
+      WDB_WEB_PORT: "14984"
       # To avoid installing demo data export DOODBA_WITHOUT_DEMO=all
       WITHOUT_DEMO: "${DOODBA_WITHOUT_DEMO-false}"
     volumes:
       - ./odoo/custom:/opt/odoo/custom:ro,z
       - ./odoo/auto:/opt/odoo/auto:rw,z
     depends_on:
-      - cdnjs_cloudflare_proxy
       - db
-      - fonts_googleapis_proxy
-      - fonts_gstatic_proxy
-      - google_proxy
-      - gravatar_proxy
+      - proxy_cdnjs_cloudflare_com
+      - proxy_fonts_googleapis_com
+      - proxy_fonts_gstatic_com
+      - proxy_www_google_com
+      - proxy_www_googleapis_com
+      - proxy_www_gravatar_com
       - smtp
       - wdb
     command:
@@ -74,9 +75,9 @@ services:
     image: sosedoff/pgweb
     networks: *public
     ports:
-      - "11081:8081"
+      - "127.0.0.1:14081:8081"
     environment:
-      DATABASE_URL: postgres://odoo:odoopassword@db:5432/odoo_v12?sslmode=disable
+      DATABASE_URL: postgres://odoo:odoopassword@db:5432/devel?sslmode=disable
     depends_on:
       - db
 
@@ -86,19 +87,19 @@ services:
       service: smtpfake
     networks: *public
     ports:
-      - "127.0.0.1:11025:8025"
+      - "127.0.0.1:14025:8025"
 
   wdb:
     image: kozea/wdb
     networks: *public
     ports:
-      - "127.0.0.1:11984:1984"
+      - "127.0.0.1:14984:1984"
     # HACK https://github.com/Kozea/wdb/issues/136
     init: true
 
   # Whitelist outgoing traffic for tests, reports, etc.
-  cdnjs_cloudflare_proxy:
-    image: tecnativa/whitelist
+  proxy_cdnjs_cloudflare_com:
+    image: ghcr.io/tecnativa/docker-whitelist:latest
     networks:
       default:
         aliases:
@@ -108,8 +109,8 @@ services:
       TARGET: cdnjs.cloudflare.com
       PRE_RESOLVE: 1
 
-  fonts_googleapis_proxy:
-    image: tecnativa/whitelist
+  proxy_fonts_googleapis_com:
+    image: ghcr.io/tecnativa/docker-whitelist:latest
     networks:
       default:
         aliases:
@@ -119,8 +120,8 @@ services:
       TARGET: fonts.googleapis.com
       PRE_RESOLVE: 1
 
-  fonts_gstatic_proxy:
-    image: tecnativa/whitelist
+  proxy_fonts_gstatic_com:
+    image: ghcr.io/tecnativa/docker-whitelist:latest
     networks:
       default:
         aliases:
@@ -130,8 +131,8 @@ services:
       TARGET: fonts.gstatic.com
       PRE_RESOLVE: 1
 
-  google_proxy:
-    image: tecnativa/whitelist
+  proxy_www_google_com:
+    image: ghcr.io/tecnativa/docker-whitelist:latest
     networks:
       default:
         aliases:
@@ -141,8 +142,19 @@ services:
       TARGET: www.google.com
       PRE_RESOLVE: 1
 
-  gravatar_proxy:
-    image: tecnativa/whitelist
+  proxy_www_googleapis_com:
+    image: ghcr.io/tecnativa/docker-whitelist:latest
+    networks:
+      default:
+        aliases:
+          - www.googleapis.com
+      public:
+    environment:
+      TARGET: www.googleapis.com
+      PRE_RESOLVE: 1
+
+  proxy_www_gravatar_com:
+    image: ghcr.io/tecnativa/docker-whitelist:latest
     networks:
       default:
         aliases:
@@ -156,3 +168,7 @@ networks:
   default:
     internal: true
   public:
+
+volumes:
+  filestore:
+  db:

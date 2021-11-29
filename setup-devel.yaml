@@ -16,8 +16,7 @@ services:
       args:
         AGGREGATE: "false"
         DEPTH_DEFAULT: 100
-        ODOO_VERSION: "13.0"
-        ODOO_ORIGIN: "openupgrade"
+        ODOO_VERSION: "14.0"
         PYTHONOPTIMIZE: ""
         PIP_INSTALL_ODOO: "false"
         CLEAN: "false"
@@ -34,7 +33,6 @@ services:
       UID: "${UID:-1000}"
       GID: "${GID:-1000}"
       UMASK: "$UMASK"
-      ODOO_ORIGIN: "openupgrade"
     user: root
     entrypoint: autoaggregate
 

@@ -1,3 +1,2 @@
-postgresql-client-12
 rsync
 default-jre
