@@ -16,6 +16,7 @@ services:
       LIST_DB: "false"
     tty: true
     volumes:
+      - old_filestore:/var/lib/odoo_old:z
       - filestore:/var/lib/odoo:z
 
   db:
