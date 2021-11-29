@@ -1,5 +1,3 @@
 git+https://github.com/OCA/openupgradelib.git@master
 unicodecsv
 unidecode
-libsass==0.12.3
-jingtrang
