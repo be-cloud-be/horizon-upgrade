@@ -1,1 +1,2 @@
+postgresql-client-12
 rsync
