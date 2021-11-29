@@ -12,6 +12,8 @@ services:
       EMAIL_FROM: ""
       PGDATABASE: &dbname prod
       PGUSER: &dbuser "odoo"
+      DB_SOURCE: "odoo_v13"
+      DB_TARGET: "odoo_v14"
       PROXY_MODE: "false"
       LIST_DB: "false"
     tty: true
