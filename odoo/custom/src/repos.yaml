@@ -6,10 +6,7 @@
     # for a sane value of 100 commits)
     depth: $DEPTH_MERGE
   remotes:
-    ocb: https://github.com/OCA/OCB.git
     odoo: https://github.com/odoo/odoo.git
-    openupgrade: https://github.com/OCA/OpenUpgrade.git
-    becloud : https://github.com/be-cloud-be/odoo.git
   target: odoo $ODOO_VERSION
   merges:
     - odoo $ODOO_VERSION
