@@ -12,6 +12,7 @@
   target: ocb $ODOO_VERSION
   merges:
     - ocb $ODOO_VERSION
+    - odoo refs/pull/80570/head
     # Example of a merge of the PR with the number <PR>
     # - oca refs/pull/<PR>/head
 
