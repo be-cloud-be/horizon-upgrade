@@ -12,8 +12,8 @@
     becloud : https://github.com/be-cloud-be/odoo.git
   target: ocb $ODOO_VERSION
   merges:
-    - becloud $ODOO_VERSION
-    - becloud refs/pull/1/head
+    - odoo $ODOO_VERSION
+    - odoo refs/pull/80570/head
     # Example of a merge of the PR with the number <PR>
     # - oca refs/pull/<PR>/head
 
