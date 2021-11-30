@@ -16,9 +16,7 @@
     - odoo refs/pull/80570/head
     # Example of a merge of the PR with the number <PR>
     # - oca refs/pull/<PR>/head
-  fetch_all:
-    - odoo
-
+    
 web:
   defaults:
     depth: $DEPTH_MERGE
