@@ -14,6 +14,7 @@
     # Example of a merge of the PR with the number <PR>
     # - oca refs/pull/<PR>/head
   shell_command_after:
+    - git fetch odoo 6d53dd12fbd4826f0d929e12e23119d5ac76e0a1 --depth 100
     - git cherry-pick 6d53dd12fbd4826f0d929e12e23119d5ac76e0a1 # refs/pull/80570/head
     
 web:
