@@ -9,10 +9,11 @@
     ocb: https://github.com/OCA/OCB.git
     odoo: https://github.com/odoo/odoo.git
     openupgrade: https://github.com/OCA/OpenUpgrade.git
+    becloud : https://github.com/be-cloud-be/odoo.git
   target: ocb $ODOO_VERSION
   merges:
-    - odoo $ODOO_VERSION
-    - odoo refs/pull/80570/head
+    - becloud $ODOO_VERSION
+    - becloud refs/pull/1/head
     # Example of a merge of the PR with the number <PR>
     # - oca refs/pull/<PR>/head
 
