@@ -55,7 +55,7 @@ services:
       - smtp
       - wdb
     command:
-      - openerp-server  
+      - /opt/odoo/custom/src/odoo/openerp-server
       - --limit-memory-soft=0
       - --workers=0
 
