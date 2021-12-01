@@ -56,7 +56,7 @@ services:
       - smtp
       - wdb
     command:
-      - odoo
+      - openerp-server
       - --limit-memory-soft=0
       - --workers=0
 
