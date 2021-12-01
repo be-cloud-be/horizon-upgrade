@@ -1,2 +1,2 @@
-python-client-12
+postgresql-client-12
 rsync
