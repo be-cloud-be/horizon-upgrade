@@ -10,6 +10,10 @@ def main(env):
 
     self.env['ir.module.module'].search([('name', '=', 'web_scheduler')]).button_immediate_uninstall()
     
+    self.env['ir.module.module'].search([('name', '=', 'mass_editing')]).button_immediate_uninstall()
+    
+    self.env['ir.module.module'].search([('name', '=', 'web_widget_timepicker')]).button_immediate_uninstall()
+    
     self.env['ir.module.module'].search([('name', '=', 'web_responsive')]).button_immediate_install()
             
 if __name__ == '__main__':
