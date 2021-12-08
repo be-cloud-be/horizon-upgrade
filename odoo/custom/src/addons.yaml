@@ -1,0 +1,11 @@
+web:
+  - "*" # All web addons
+
+server-tools:
+  - "*" # base server-tools addons
+
+partner-contact:
+  - "*" # All partner-contact addons
+
+horizon:
+  - "*" # All horizon addons
