@@ -6,16 +6,20 @@
     # for a sane value of 100 commits)
     depth: $DEPTH_MERGE
   remotes:
+    openupgrade: https://github.com/OCA/OpenUpgrade.git
     odoo: https://github.com/odoo/odoo.git
+    becloud : https://github.com/be-cloud-be/odoo.git
   target: odoo $ODOO_VERSION
   merges:
-    - odoo $ODOO_VERSION
+    - openupgrade $ODOO_VERSION
     # - odoo refs/pull/80570/head
     # Example of a merge of the PR with the number <PR>
     # - oca refs/pull/<PR>/head
   shell_command_after:
-    - git fetch odoo 6d53dd12fbd4826f0d929e12e23119d5ac76e0a1 --depth 100
-    - git cherry-pick 6d53dd12fbd4826f0d929e12e23119d5ac76e0a1 # refs/pull/80570/head
+    - git fetch becloud 57be31179d83a715835bc242f9401396d62e3563
+    - git cherry-pick 57be31179d83a715835bc242f9401396d62e3563
+    - git fetch becloud 92321c993bf59d5428118b8cf9fd6fd8913747ef
+    - git cherry-pick 92321c993bf59d5428118b8cf9fd6fd8913747ef
     
 web:
   defaults:
