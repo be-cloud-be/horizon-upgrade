@@ -8,6 +8,8 @@ import click_odoo
 @click_odoo.env_options(default_log_level='error')
 def main(env):
 
+    self.env['ir.module.module'].search([('name', '=', 'im_livechat')]).button_immediate_uninstall()
+
     self.env['ir.module.module'].search([('name', '=', 'web_scheduler')]).button_immediate_uninstall()
     
     self.env['ir.module.module'].search([('name', '=', 'mass_editing')]).button_immediate_uninstall()
