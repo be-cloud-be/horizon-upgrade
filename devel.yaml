@@ -9,8 +9,8 @@ services:
       default:
       public:
     ports:
-      - "127.0.0.1:14899:6899"
-      - "127.0.0.1:14069:8069"
+      - "14899:6899"
+      - "80:8069"
     environment:
       PORT: "6899 8069"
       TARGET: odoo
