@@ -34,7 +34,7 @@ services:
       DOODBA_ENVIRONMENT: "${DOODBA_ENVIRONMENT-devel}"
       LIST_DB: "true"
       DEBUGPY_ENABLE: "${DOODBA_DEBUGPY_ENABLE:-0}"
-      PGDATABASE: &dbname odoo_v14
+      PGDATABASE: &dbname odoo_v15
       PYTHONDONTWRITEBYTECODE: 1
       PYTHONOPTIMIZE: ""
       PYTHONPATH: /opt/odoo/custom/src/odoo
@@ -175,13 +175,13 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: ~/odoo_v13_data
+      device: ~/odoo_v14_data
   filestore:
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: ~/odoo_v14_data
+      device: ~/odoo_v15_data
   db:
     driver: local
     driver_opts:

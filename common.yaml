@@ -5,15 +5,15 @@ services:
     build:
       context: ./odoo
       args:
-        ODOO_VERSION: "14.0"
+        ODOO_VERSION: "15.0"
         UID: "${UID:-1000}"
         GID: "${GID:-1000}"
     environment:
       EMAIL_FROM: ""
       PGDATABASE: &dbname prod
       PGUSER: &dbuser "odoo"
-      DB_SOURCE: "odoo_v13"
-      DB_TARGET: "odoo_v14"
+      DB_SOURCE: "odoo_v14"
+      DB_TARGET: "odoo_v15"
       PROXY_MODE: "false"
       LIST_DB: "false"
     tty: true
