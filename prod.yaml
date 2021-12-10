@@ -6,13 +6,14 @@ services:
       file: common.yaml
       service: odoo
     restart: unless-stopped
-    env_file:
-      - .docker/odoo.env
-      - .docker/db-access.env
     environment:
-      DB_FILTER: "^prod"
       DOODBA_ENVIRONMENT: "${DOODBA_ENVIRONMENT-prod}"
       INITIAL_LANG: "en_US"
+      LIST_DB: "true"
+      PGDATABASE: &dbname odoo_v15
+      PYTHONPATH: /opt/odoo/custom/src/odoo
+      SMTP_PORT: "1025"
+      WDB_WEB_PORT: "14984"
     depends_on:
       - db
     networks:
@@ -24,8 +25,9 @@ services:
     extends:
       file: common.yaml
       service: db
-    env_file:
-      - .docker/db-creation.env
+    environment:
+      POSTGRES_DB: *dbname
+      POSTGRES_PASSWORD: odoopassword
     restart: unless-stopped
 
 networks:
@@ -35,4 +37,14 @@ networks:
 
 volumes:
   filestore:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ~/odoo_v15_data
   db:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ~/postgresql_data
