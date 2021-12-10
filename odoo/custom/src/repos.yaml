@@ -7,6 +7,7 @@
     depth: $DEPTH_DEFAULT
   remotes:
     odoo: https://github.com/odoo/odoo.git
+    becloud : https://github.com/be-cloud-be/odoo.git
   target: odoo $ODOO_VERSION
   merges:
     - odoo $ODOO_VERSION
