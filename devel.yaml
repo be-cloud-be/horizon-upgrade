@@ -170,12 +170,6 @@ networks:
   public:
 
 volumes:
-  old_filestore:
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: ~/odoo_v13_data
   filestore:
     driver: local
     driver_opts:

@@ -46,6 +46,7 @@ services:
       ODOO_DB_COPY: "1"
       ODOO_FILESTORE_COPY: "1"
     volumes:
+      - old_filestore:/var/lib/odoo_old:z
       - ./odoo/custom:/opt/odoo/custom:ro,z
       - ./odoo/auto:/opt/odoo/auto:rw,z
     depends_on:
