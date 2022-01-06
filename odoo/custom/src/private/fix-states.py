@@ -12,7 +12,7 @@ def main(env):
             rec.state = '0_valuated'
         elif rec.acquiered == 'A' :
             rec.state = '6_success'
-        elif rec.acquiered == 'NA' and final_result_bool :
+        elif rec.acquiered == 'NA' and res.final_result_bool :
             rec.state = '7_failed'
         else :
             rec.state = '5_progress'
