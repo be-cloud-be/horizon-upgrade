@@ -18,6 +18,8 @@ def main(env):
     
     self.env['ir.module.module'].search([('name', '=', 'web_diagram')]).button_immediate_uninstall()
     
+    self.env['ir.module.module'].search([('name', '=', 'project')]).button_immediate_uninstall()
+    
     self.env['ir.module.module'].search([('name', '=', 'web_responsive')]).button_immediate_install()
             
 if __name__ == '__main__':
