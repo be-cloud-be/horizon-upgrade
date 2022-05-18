@@ -62,3 +62,15 @@ server-tools:
     server-tools $ODOO_VERSION
   merges:
     - server-tools $ODOO_VERSION
+    
+muk_web:
+  defaults:
+    # Shallow repositories (1=1) are faster & thinner
+    # You may need a bigger depth when merging PRs
+    depth: "$DEPTH_DEFAULT"
+  remotes:
+    muk_web: https://github.com/muk-it/muk_web.git
+  target:
+    muk_web $ODOO_VERSION
+  merges:
+    - muk_web $ODOO_VERSION

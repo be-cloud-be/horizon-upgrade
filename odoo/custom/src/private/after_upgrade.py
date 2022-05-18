@@ -21,6 +21,8 @@ def main(env):
     self.env['ir.module.module'].search([('name', '=', 'project')]).button_immediate_uninstall()
     
     self.env['ir.module.module'].search([('name', '=', 'web_responsive')]).button_immediate_install()
+    
+    self.env['ir.attachment'].search([['res_model','=','ir.ui.view'],['name','like','assets']]).unlink()
             
 if __name__ == '__main__':
     main()
