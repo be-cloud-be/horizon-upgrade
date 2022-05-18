@@ -9,3 +9,6 @@ partner-contact:
 
 horizon:
   - "*" # All horizon addons
+  
+muk_web:
+  - '*'
