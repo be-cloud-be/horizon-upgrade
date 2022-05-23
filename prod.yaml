@@ -6,9 +6,6 @@ services:
       file: common.yaml
       service: odoo
     restart: unless-stopped
-    ports:
-      - "6899:6899"
-      - "80:8069"
     environment:
       DOODBA_ENVIRONMENT: "${DOODBA_ENVIRONMENT-prod}"
       INITIAL_LANG: "en_US"
@@ -24,6 +21,9 @@ services:
       - db
     networks:
       default:
+    ports:
+      - "6899:6899"
+      - "80:8069"
     labels:
       doodba.domain.main: "horizon-dev.student-crlg.be"
     command:
