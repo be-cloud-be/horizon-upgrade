@@ -14,12 +14,17 @@ services:
       PYTHONPATH: /opt/odoo/custom/src/odoo
       SMTP_PORT: "1025"
       WDB_WEB_PORT: "14984"
+    volumes:
+      - ./odoo/custom:/opt/odoo/custom:ro,z
+      - ./odoo/auto:/opt/odoo/auto:rw,z
     depends_on:
       - db
     networks:
       default:
     labels:
-      doodba.domain.main: ""
+      doodba.domain.main: "horizon-dev.student-crlg.be"
+    command:
+      - odoo
 
   db:
     extends:
