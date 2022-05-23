@@ -10,7 +10,7 @@ services:
       DOODBA_ENVIRONMENT: "${DOODBA_ENVIRONMENT-prod}"
       INITIAL_LANG: "en_US"
       LIST_DB: "true"
-      PGDATABASE: &dbname odoo_v15
+      PGDATABASE: &dbname odoo_v14
       PYTHONPATH: /opt/odoo/custom/src/odoo
       SMTP_PORT: "1025"
       WDB_WEB_PORT: "14984"
@@ -41,7 +41,7 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: ~/odoo_v15_data
+      device: ~/odoo_v14_data
   db:
     driver: local
     driver_opts:
