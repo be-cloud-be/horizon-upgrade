@@ -1,4 +1,4 @@
-git+https://github.com/OCA/openupgradelib.git@master
+git+https://github.com/OCA/openupgradelib.git@3.3.3
 unicodecsv
 unidecode
 libsass==0.12.3
