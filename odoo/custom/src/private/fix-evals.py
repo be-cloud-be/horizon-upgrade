@@ -8,8 +8,8 @@ import click_odoo
 @click_odoo.env_options(default_log_level='error')
 def main(env):
     
-    UPDATE school_individual_course SET final_result = first_session_result;
-    UPDATE school_individual_course SET second_result = CASE WHEN second_session_result_bool THEN second_session_result ELSE NULL;
+    UPDATE school_individual_course SET final_result = CASE WHEN first_session_result_bool THEN first_session_result ELSE NULL END;
+    UPDATE school_individual_course SET second_result = CASE WHEN second_session_result_bool THEN second_session_result ELSE NULL END;
             
 if __name__ == '__main__':
     main()
