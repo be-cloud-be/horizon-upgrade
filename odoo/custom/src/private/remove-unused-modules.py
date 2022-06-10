@@ -22,6 +22,8 @@ def main(env):
     env['ir.module.module'].search([('name', '=', 'analytic'),("state",'=','installed')]).button_immediate_uninstall()
     env['ir.module.module'].search([('name', '=', 'board'),("state",'=','installed')]).button_immediate_uninstall()
     env['ir.module.module'].search([('name', '=', 'project'),("state",'=','installed')]).button_immediate_uninstall()
+    env['ir.module.module'].search([('name', '=', 'stock'),("state",'=','installed')]).button_immediate_uninstall()
+    env['ir.module.module'].search([('name', '=', 'stock'),("state",'=','installed')]).button_immediate_uninstall()
     env['ir.module.module'].search([('name', '=', 'product'),("state",'=','installed')]).button_immediate_uninstall()
     env['ir.module.module'].search([('name', '=', 'sales_team'),("state",'=','installed')]).button_immediate_uninstall()
     env['ir.module.module'].search([('name', '=', 'web_diagram'),("state",'=','installed')]).button_immediate_uninstall()
