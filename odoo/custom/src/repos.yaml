@@ -52,9 +52,9 @@ horizon:
   remotes:
     horizon: https://github.com/be-cloud-be/horizon.git
   target:
-    horizon $ODOO_VERSION
+    horizon $ODOO_VERSION-prod
   merges:
-    - horizon $ODOO_VERSION
+    - horizon $ODOO_VERSION-prod
     
 server-tools:
   defaults:
