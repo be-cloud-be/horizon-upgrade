@@ -2,7 +2,7 @@ web:
   - "*" # All web addons
 
 server-tools:
-  - "*" # base server-tools addons
+  - "!auditlog" # base server-tools addons
 
 partner-contact:
   - "*" # All partner-contact addons
